@@ -1,47 +1,5 @@
-#include "Bank.h"
+#include "../include/Bank.h"
 #include <iostream>
-
-int main() {
-    Bank bank;
-
-    int choice;
-    do {
-        std::cout << "\n=== Banking System ===\n";
-        std::cout << "1. Create Account\n";
-        std::cout << "2. Deposit\n";
-        std::cout << "3. Withdraw\n";
-        std::cout << "4. Show Account Details\n";
-        std::cout << "5. Show All Accounts\n";
-        std::cout << "0. Exit\n";
-        std::cout << "Choose an option: ";
-        std::cin >> choice;
-
-    switch (choice){
-    case 1:
-        createNewAccount(bank);
-        break;
-    case 2:
-        depositMoney(bank);
-        break;
-    case 3:
-        withdrawMoney(bank);
-        break;
-    case 4:
-        showAccountDetails(bank);
-        break;
-    case 5:
-        bank.showAllAccounts();
-        break;
-    case 0:
-        std::cout <<"Exiting.\n";
-        break;
-    default:
-        std::cout << "Invalid choice.\n";
-    }
-    }while (choice !=0);
-
-    return 0;
-}
 
 void createNewAccount(Bank &bank) {
     int accNum;
@@ -111,4 +69,46 @@ void showAccountDetails(Bank &bank){
     if (acc) {
         acc->showDetails();
     }
+}
+
+int main() {
+    Bank bank;
+
+    int choice;
+    do {
+        std::cout << "\n=== Banking System ===\n";
+        std::cout << "1. Create Account\n";
+        std::cout << "2. Deposit\n";
+        std::cout << "3. Withdraw\n";
+        std::cout << "4. Show Account Details\n";
+        std::cout << "5. Show All Accounts\n";
+        std::cout << "0. Exit\n";
+        std::cout << "Choose an option: ";
+        std::cin >> choice;
+
+    switch (choice){
+    case 1:
+        createNewAccount(bank);
+        break;
+    case 2:
+        depositMoney(bank);
+        break;
+    case 3:
+        withdrawMoney(bank);
+        break;
+    case 4:
+        showAccountDetails(bank);
+        break;
+    case 5:
+        bank.showAllAccounts();
+        break;
+    case 0:
+        std::cout <<"Exiting.\n";
+        break;
+    default:
+        std::cout << "Invalid choice.\n";
+    }
+    }while (choice !=0);
+
+    return 0;
 }

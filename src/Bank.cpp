@@ -1,4 +1,4 @@
-#include "Bank.h"
+#include "../include/Bank.h"
 #include <iostream>
 
 void Bank::createAccount(int accNum, const std::string &name, std::string &email,
