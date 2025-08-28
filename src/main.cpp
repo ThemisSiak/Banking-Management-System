@@ -24,10 +24,13 @@ int main() {
         depositMoney(bank);
         break;
     case 3:
+        withdrawMoney(bank);
         break;
     case 4:
+        showAccountDetails(bank);
         break;
     case 5:
+        bank.showAllAccounts();
         break;
     case 0:
         std::cout <<"Exiting.\n";
@@ -75,6 +78,37 @@ void depositMoney(Bank &bank) {
     std::cout << "\n Enter Account Number: ";
     std::cin >> accNum;
 
+    std::shared_ptr<Account> acc = bank.getAccount(accNum);
+    if (!acc) return;
+
     std::cout << "\n Enter Amount to Deposit: ";
     std::cin >> amount;
+    acc->deposit(amount);
+}
+
+void withdrawMoney(Bank &bank){
+    int accNum;
+    double amount;
+    std::string pin;
+
+    std::cout << "Enter account number";
+    std::cin >> accNum;
+
+    std::shared_ptr<Account> acc = bank.getAccount(accNum);
+    if (!acc) return;
+
+    std::cout << "\n Enter Amount to Withdraw: ";
+    std::cin >> amount;
+    acc->withdraw(amount);
+}
+
+void showAccountDetails(Bank &bank){
+    int accNum;
+    std::cout << "Enter account number: ";
+    std::cin >> accNum;
+
+    std::shared_ptr<Account> acc = bank.getAccount(accNum);
+    if (acc) {
+        acc->showDetails();
+    }
 }
